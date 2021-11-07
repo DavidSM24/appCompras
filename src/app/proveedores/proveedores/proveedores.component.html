@@ -1,0 +1,44 @@
+<section *ngIf="!charged">
+    <div class="div1"></div>
+    <div class="div2"></div>
+    <div class="div3"></div>
+    <div class="div4"></div>
+    <div class="div5"></div>
+    <div class="div6"></div>
+    <div class="div7"></div>
+    <div class="div8"></div>
+    <div class="div9"></div>
+    <div class="div10"></div>
+</section>
+
+<span *ngIf="charged">
+    <h1>Listado de Proveedores</h1>
+    <a class="btn btn-primary float-md-right" routerLink="/addprovee" style="position: absolute;">Añadir
+        nuevo proveedor</a>
+    <br>
+    <table class="table table-bordered table-striped tabla" style="margin-top: 40px;">
+        <thead>
+            <tr class="filters">
+                <th>Nombre</th>
+                <th>Correo Electrónico</th>
+                <th>Telefono</th>
+                <th>Editar</th>
+                <th>Eliminar</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let proveedor of proveedores">
+                <td>{{ proveedor.nombre }}</td>
+                <td><a href="mailto:{{ proveedor.email }}">{{ proveedor.email }}</a></td>
+                <td>{{ proveedor.telefono }}</td>
+                <td>
+                    <button type="button" class="btn btn-success"
+                        routerLink="/editprov/{{ proveedor.key }}">Editar</button>
+                </td>
+                <td>
+                    <button class="btn btn-danger" (click)="this.delProveedor(proveedor)">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</span>

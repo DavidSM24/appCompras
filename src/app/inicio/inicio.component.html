@@ -1,0 +1,54 @@
+<section *ngIf="!charged">
+    <span class="div1"></span>
+    <span class="div2"></span>
+    <span class="div3"></span>
+    <span class="div4"></span>
+    <span class="div5"></span>
+    <span class="div6"></span>
+    <span class="div7"></span>
+    <span class="div8"></span>
+    <span class="div9"></span>
+    <span class="div10"></span>
+</section>
+
+<div id="login-box" *ngIf="charged">
+    <form [formGroup]="loginForm">
+        <div class="left">
+            <h1>Sign up</h1>
+
+            <input type="text" name="email" placeholder="E-mail" class="form-control" formControlName="email" />
+
+
+            <input type="password" name="password" placeholder="Password" class="form-control"
+                formControlName="password" />
+
+
+            <input type="submit" name="signup_submit" value="Inicio" (click)="signIn()" />
+            <input type="submit" style="margin-top: 10px!important" name="signup_submit" value="Registro"
+                (click)="createUser()" />
+        </div>
+
+        <div class="right">
+            <h1 style="padding-top: 70px!important"><strong>Sign in with<br />Social Network</strong></h1>
+            <button class="social-signin facebook" (click)="FacebookLogin()">Log in with facebook</button>
+            <button class="social-signin twitter" (click)="GitLogin()">Log in with GitHub</button>
+            <button class="social-signin google" (click)="googleLogin()">Log in with Google+</button>
+        </div>
+    </form>
+    <div class="or">OR</div>
+
+</div>
+
+<div *ngIf="charged" id="error-box">
+<ng-container *ngIf="errorMessage">
+    <div class="alert alert-danger">{{errorMessage}}</div>
+</ng-container>
+<p class="alert alert-danger" *ngIf="loginForm.controls.email.invalid &&
+            loginForm.controls.email.touched">
+    El campo email es obligatorio.
+</p>
+<p class="alert alert-danger" *ngIf="loginForm.controls.password.invalid &&
+            loginForm.controls.password.touched">
+    El campo contraseña es obligatorio.
+</p>
+</div>

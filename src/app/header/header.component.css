@@ -1,0 +1,9 @@
+.active{
+    font-weight:bolder !important;
+}
+nav {
+    margin-bottom: 40px;
+   }
+   .elements {
+    display: inline;
+}
